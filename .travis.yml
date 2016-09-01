@@ -8,14 +8,14 @@ after_success:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - if [ "$TRAVIS_TAG" != "" ]; then
       docker pull jbonachera/clickcount:$TRAVIS_COMMIT;
-      docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount:$TRAVIS_TAG
-      docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount
+      docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount:$TRAVIS_TAG;
+      docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount;
       docker push jbonachera/clickcount:$TRAVIS_TAG;
       docker push jbonachera/clickcount;
     fi
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker build -t jbonachera/clickcount:$TRAVIS_COMMIT .
-      docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount:dev
+      docker build -t jbonachera/clickcount:$TRAVIS_COMMIT .;
+      docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount:dev;
       docker push jbonachera/clickcount:$TRAVIS_COMMIT;
-      docker push jbonachera/clickcount:dev
+      docker push jbonachera/clickcount:dev;
     fi
