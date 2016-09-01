@@ -1,0 +1,15 @@
+version: '2'
+services:
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    links:
+      - redis:redis
+    environment:
+      - redis_host=redis
+  redis:
+    image: redis
+    ports: 
+      - 6379:6379
+
