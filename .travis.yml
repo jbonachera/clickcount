@@ -4,7 +4,7 @@ services:
 
 language: java
 before_install:
-  - apt-get install -y python-requests
+  - sudo apt-get install -y python-requests
 after_success:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - if [ "$TRAVIS_TAG" != "" ]; then
