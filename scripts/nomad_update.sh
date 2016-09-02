@@ -1,8 +1,9 @@
 #!/bin/bash
-tag=${1}
+job=${1}
+tag=${2}
 payload="{
 	\"Job\": {
-		\"ID\": \"clickcount\",
+		\"ID\": \"$job\",
 		\"TaskGroups\": [{
 			\"Name\": \"clickcount\",
 			\"Tasks\": [{
