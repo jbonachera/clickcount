@@ -3,8 +3,6 @@ services:
   - docker
 
 language: java
-before_install:
-  - apt-get install -y python-requests
 after_success:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - if [ "$TRAVIS_TAG" != "" ]; then
@@ -13,12 +11,12 @@ after_success:
       docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount;
       docker push jbonachera/clickcount:$TRAVIS_TAG;
       docker push jbonachera/clickcount;
-      IMAGE=jbonachera/clickcount TAG=$TRAVIS_TAG JOB_ID=clickcount scripts/nomad_update.py
+      IMAGE=jbonachera/clickcount TAG=$TRAVIS_TAG JOB_ID=clickcount scripts/nomad_update.py;
     fi
   - if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" ]; then
       docker build -t jbonachera/clickcount:$TRAVIS_COMMIT .;
       docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount:dev;
       docker push jbonachera/clickcount:$TRAVIS_COMMIT;
       docker push jbonachera/clickcount:dev;
-      IMAGE=jbonachera/clickcount TAG=$TRAVIS_TAG JOB_ID=clickcount-dev scripts/nomad_update.py
+      IMAGE=jbonachera/clickcount TAG=$TRAVIS_COMMIT JOB_ID=clickcount-dev scripts/nomad_update.py;
     fi
