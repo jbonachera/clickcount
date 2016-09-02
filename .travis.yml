@@ -12,12 +12,12 @@ after_success:
       docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount;
       docker push jbonachera/clickcount:$TRAVIS_TAG;
       docker push jbonachera/clickcount;
-      ./scripts/nomad_update.sh $TRAVIS_TAG;
+      ./scripts/nomad_update.sh clickcount $TRAVIS_TAG;
     fi
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker build -t jbonachera/clickcount:$TRAVIS_COMMIT .;
       docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount:dev;
       docker push jbonachera/clickcount:$TRAVIS_COMMIT;
       docker push jbonachera/clickcount:dev;
-      ./scripts/nomad_update.sh $TRAVIS_COMMIT;
+      ./scripts/nomad_update.sh clickcount-staging $TRAVIS_COMMIT;
     fi
