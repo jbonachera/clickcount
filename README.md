@@ -16,7 +16,7 @@ The following environment variables are used in the application
 
 The following workflow is used:
 
-  * any PR or push triggers a CI run, on travis. Travis check if the application can build, and passes the tests.
+  * any PR or push triggers a CI run, on travis. Travis checks if the application can build, and passes the tests.
   * accepting a PR on the _master_ branch triggers a CI run, a release of a new Docker image on the Docker hub (https://hub.docker.com/r/jbonachera/clickcount/), and a deployment of this image in the Staging environment, which runs on clickcount-staging.<domain>.
   * pushing a new tag will promote the image related to the tag into the Production environment, which runs on clickcount.<domain>.
 
