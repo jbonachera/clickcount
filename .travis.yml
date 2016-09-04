@@ -18,5 +18,5 @@ after_success:
       docker tag jbonachera/clickcount:$TRAVIS_COMMIT jbonachera/clickcount:dev;
       docker push jbonachera/clickcount:$TRAVIS_COMMIT;
       docker push jbonachera/clickcount:dev;
-      IMAGE=jbonachera/clickcount TAG=$TRAVIS_COMMIT JOB_ID=clickcount-dev scripts/nomad_update.py;
+      IMAGE=jbonachera/clickcount TAG=$TRAVIS_COMMIT JOB_ID=clickcount-staging scripts/nomad_update.py;
     fi
