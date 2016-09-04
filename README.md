@@ -4,6 +4,14 @@
 
 This project is running on an instance of another project:  https://github.com/jbonachera/clickcount-infra.
 
+# Environment variables
+
+The following environment variables are used in the application
+
+|  NAME     |  TYPE  | DESCRIPTION                  | REQUIRED |
+|-----------|--------|------------------------------|----------|
+|redis_host | string | the redis host to connect to | yes      |
+
 # Workflow
 
 The following workflow is used:
@@ -20,3 +28,10 @@ The following tagging strategy is used (all the work is done by Travis CI):
   * tagging a commit in the git repository tags the related docker image with the same name; for instance, running `git tag -a v0.1` on the commit `beeac69...` will alias `jbonachera/clickcount:beeac69...` as `jbonachera/clickcount:v0.1`. It will also alias the `lastest` tag on it, for convenience.
 
 So, running `jbonachera/clickcount:dev` is running the most recent release of the `master` branch, and running `jbonachera/clickcount` is running the most recent "approved" (tagged) release.
+
+# Development
+
+You can spawn a local-version of the application using docker-compose:
+`docker-compose up -d `
+
+It will spawn a local redis instance, build the app and spawn it.
