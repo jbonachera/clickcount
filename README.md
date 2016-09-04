@@ -4,7 +4,7 @@
 
 This project is running on an instance of another project:  https://github.com/jbonachera/clickcount-infra.
 
-# Environment variables
+## Environment variables
 
 The following environment variables are used in the application
 
@@ -12,7 +12,7 @@ The following environment variables are used in the application
 |-----------|--------|------------------------------|----------|
 |redis_host | string | the redis host to connect to | yes      |
 
-# Workflow
+## Workflow
 
 The following workflow is used:
 
@@ -20,7 +20,7 @@ The following workflow is used:
   * accepting a PR on the _master_ branch triggers a CI run, a release of a new Docker image on the Docker hub (https://hub.docker.com/r/jbonachera/clickcount/), and a deployment of this image in the Staging environment, which runs on clickcount-staging.<domain>.
   * pushing a new tag will promote the image related to the tag into the Production environment, which runs on clickcount.<domain>.
 
-# Docker tagging
+## Docker tagging
 
 The following tagging strategy is used (all the work is done by Travis CI):
 
@@ -29,7 +29,7 @@ The following tagging strategy is used (all the work is done by Travis CI):
 
 So, running `jbonachera/clickcount:dev` is running the most recent release of the `master` branch, and running `jbonachera/clickcount` is running the most recent "approved" (tagged) release.
 
-# Development
+## Development
 
 You can spawn a local-version of the application using docker-compose:
 `docker-compose up -d `
